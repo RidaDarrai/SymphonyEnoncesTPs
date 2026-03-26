@@ -1,0 +1,37 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1>Course Library</h1>
+    
+    <div class="mt-4">
+        <a href="{{ path('app_course') }}" class="btn btn-primary mb-3">Upload New Course</a>
+    </div>
+    
+    {% if courses is empty %}
+        <div class="alert alert-info">
+            No courses available. Be the first to upload one!
+        </div>
+    {% else %}
+        <div class="row">
+            {% for course in courses %}
+                <div class="col-md-6 mb-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ course.title }}</h5>
+                            <p class="card-text">{{ course.summary }}</p>
+                            <p class="text-muted">
+                                <small>Created: {{ course.createdAt|date('Y-m-d H:i') }}</small>
+                            </p>
+                            <a href="{{ path('app_course_show', {id: course.id}) }}" class="btn btn-sm btn-primary">View</a>
+                            {% if course.filePath %}
+                                <a href="{{ path('app_course_download', {id: course.id}) }}" class="btn btn-sm btn-success">Download</a>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+</div>
+{% endblock %}

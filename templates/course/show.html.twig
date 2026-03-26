@@ -1,0 +1,33 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1>{{ course.title }}</h1>
+    
+    <div class="card mt-4">
+        <div class="card-body">
+            <h5>Summary</h5>
+            <p>{{ course.summary }}</p>
+            
+            <hr>
+            
+            <p class="text-muted">
+                <small>Created: {{ course.createdAt|date('Y-m-d H:i') }}</small>
+            </p>
+            
+            {% if course.filePath %}
+                <a href="{{ path('app_course_download', {id: course.id}) }}" class="btn btn-success">
+                    Download Course File
+                </a>
+            {% else %}
+                <span class="badge bg-secondary">No file attached</span>
+            {% endif %}
+        </div>
+    </div>
+    
+    <div class="mt-3">
+        <a href="{{ path('app_course_all') }}" class="btn btn-secondary">Back to Library</a>
+        <a href="{{ path('app_course') }}" class="btn btn-primary">Upload New Course</a>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,35 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1>Upload Course</h1>
+    
+    <div class="card mt-4">
+        <div class="card-body">
+            {{ form_start(form) }}
+            <div class="mb-3">
+                {{ form_label(form.title, 'Course Title') }}
+                {{ form_widget(form.title, {attr: {class: 'form-control'}}) }}
+                {{ form_errors(form.title) }}
+            </div>
+            <div class="mb-3">
+                {{ form_label(form.summary, 'Summary') }}
+                {{ form_widget(form.summary, {attr: {class: 'form-control', rows: 4}}) }}
+                {{ form_errors(form.summary) }}
+            </div>
+            <div class="mb-3">
+                {{ form_label(form.file, 'Course File') }}
+                {{ form_widget(form.file, {attr: {class: 'form-control'}}) }}
+                <small class="text-muted">Allowed: PDF, DOC, DOCX, PPT, PPTX, PNG, JPG, WEBP (max 10MB)</small>
+                {{ form_errors(form.file) }}
+            </div>
+            <button type="submit" class="btn btn-primary">Upload Course</button>
+            {{ form_end(form) }}
+        </div>
+    </div>
+    
+    <div class="mt-3">
+        <a href="{{ path('app_course_all') }}" class="btn btn-secondary">View All Courses</a>
+    </div>
+</div>
+{% endblock %}
