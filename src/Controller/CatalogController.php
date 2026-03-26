@@ -5,7 +5,9 @@ declare(strict_types=1);
 namespace App\Controller;
 
 use App\Course\Handler\DefaultCourseHandler;
+use App\Form\Type\AddToWishlistType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 
@@ -17,7 +19,7 @@ class CatalogController extends AbstractController
     }
 
     #[Route(path: '/{slug}', name: 'view')]
-    public function show(string $slug): Response
+    public function show(string $slug, Request $request): Response
     {
         $course = $this->courseHandler->getCourseBySlug($slug);
 
@@ -25,8 +27,16 @@ class CatalogController extends AbstractController
             throw $this->createNotFoundException('La page que vous demandez est introuvable.');
         }
 
+        $form = $this->createForm(AddToWishlistType::class);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted()) {
+            $this->addFlash('success', sprintf('Course "%s" added to wishlist!', $course->getName()));
+        }
+
         return $this->render('catalog/show.html.twig', [
             'course' => $course,
+            'form' => $form->createView(),
         ]);
     }
 

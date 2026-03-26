@@ -1,7 +1,6 @@
 {% extends 'layout.html.twig' %}
 {% block content %}
     {{ include('partials/_jumbotron.html.twig') }}
-
     <div class="row">
         <div class="col-9">
             <div class="card mb-4">
@@ -20,6 +19,11 @@
                     <p class="card-text"><strong>Synopsis :</strong> {{ course.synopsis }}</p>
                     <hr>
                     <p class="card-text">{{ course.description }}</p>
+                    {{ form_start(form) }}
+                    <button type="submit" class="btn btn-primary">
+                        Add to wish list
+                    </button>
+                    {{ form_end(form) }}
                 </div>
             </div>
         </div>
