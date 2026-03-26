@@ -1,0 +1,70 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1>Inscription</h1>
+    
+    <div class="row mt-4">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-body">
+                    {{ form_start(form) }}
+                    
+                    <div class="mb-3">
+                        {{ form_label(form.fullName) }}
+                        {{ form_widget(form.fullName, {attr: {class: 'form-control'}}) }}
+                        {{ form_errors(form.fullName) }}
+                    </div>
+                    
+                    <div class="mb-3">
+                        {{ form_label(form.email) }}
+                        {{ form_widget(form.email, {attr: {class: 'form-control'}}) }}
+                        {{ form_errors(form.email) }}
+                    </div>
+                    
+                    <div class="mb-3">
+                        {{ form_label(form.phone) }}
+                        {{ form_widget(form.phone, {attr: {class: 'form-control'}}) }}
+                        {{ form_errors(form.phone) }}
+                    </div>
+                    
+                    <div class="mb-3">
+                        {{ form_label(form.password.first) }}
+                        {{ form_widget(form.password.first, {attr: {class: 'form-control'}}) }}
+                        {{ form_errors(form.password.first) }}
+                    </div>
+                    
+                    <div class="mb-3">
+                        {{ form_label(form.password.second) }}
+                        {{ form_widget(form.password.second, {attr: {class: 'form-control'}}) }}
+                        {{ form_errors(form.password.second) }}
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary">S'inscrire</button>
+                    {{ form_end(form) }}
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-4">
+            <div class="card bg-light">
+                <div class="card-body">
+                    <h5>Instructions</h5>
+                    <ul class="mb-0">
+                        <li>Tous les champs sont obligatoires</li>
+                        <li>Le mot de passe doit contenir:
+                            <ul>
+                                <li>Minimum 8 caractères</li>
+                                <li>Au moins 1 majuscule</li>
+                                <li>Au moins 1 minuscule</li>
+                                <li>Au moins 1 chiffre</li>
+                                <li>Au moins 1 caractère spécial (@-_)</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

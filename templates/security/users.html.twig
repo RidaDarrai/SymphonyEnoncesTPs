@@ -1,0 +1,18 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1>Gestion des utilisateurs</h1>
+    
+    <div class="alert alert-info mt-4">
+        Cette page est réservée aux administrateurs.
+    </div>
+    
+    <div class="card mt-4">
+        <div class="card-body">
+            <p>Bienvenue dans la zone d'administration des utilisateurs.</p>
+            <a href="{{ path('app_security_register') }}" class="btn btn-primary">Créer un nouvel utilisateur</a>
+        </div>
+    </div>
+</div>
+{% endblock %}
