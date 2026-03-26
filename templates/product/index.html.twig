@@ -23,7 +23,7 @@
                 <li><strong>Battery Life:</strong> 30 hours</li>
             </ul>
             
-            {{ form_start(form, {'attr': {'method': 'post', 'action': '/cart'}}) }}
+            {{ form_start(form, {'attr': {'method': 'post', 'action': '/product'}}) }}
                 <div class="mb-3">
                     {{ form_label(form.quantity, 'Quantity') }}
                     {{ form_widget(form.quantity, {'attr': {'class': 'form-control'}}) }}
@@ -35,6 +35,7 @@
                 </div>
                 
                 {{ form_widget(form.add_to_cart) }}
+                {{ form_rest(form) }}
             {{ form_end(form) }}
         </div>
     </div>
