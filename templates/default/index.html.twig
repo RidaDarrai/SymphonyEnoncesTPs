@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>{{ controller_name }}</title>
+    <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}"/>
+</head>
+<body>
+    <div class="container mt-5">
+        <h1>{{ controller_name }}</h1>
+        
+        <div class="card mt-4">
+            <div class="card-header">
+                <h5>Request Information</h5>
+            </div>
+            <div class="card-body">
+                {% if query_params is defined %}
+                <h6>Query Parameters (GET):</h6>
+                <pre>{{ query_params|json_encode }}</pre>
+                <p><strong>Page:</strong> {{ page }} (string) | {{ page_int }} (int)</p>
+                {% endif %}
+                
+                {% if client_ip is defined %}
+                <p><strong>Client IP:</strong> {{ client_ip }}</p>
+                <p><strong>User Agent:</strong> {{ user_agent }}</p>
+                {% endif %}
+                
+                {% if post_data is defined %}
+                <h6>POST Data:</h6>
+                <pre>{{ post_data|json_encode }}</pre>
+                {% endif %}
+                
+                {% if payload is defined %}
+                <h6>Payload:</h6>
+                <pre>{{ payload|json_encode }}</pre>
+                {% endif %}
+                
+                {% if pagination is defined %}
+                <h6>Pagination (via MapQueryString):</h6>
+                <p><strong>Page:</strong> {{ pagination.page }}</p>
+                <p><strong>Limit:</strong> {{ pagination.limit }}</p>
+                {% endif %}
+                
+                {% if credentials is defined %}
+                <h6>Credentials (via MapRequestPayload):</h6>
+                <p><strong>Username:</strong> {{ credentials.username }}</p>
+                <p><strong>Password:</strong> ********</p>
+                {% endif %}
+            </div>
+        </div>
+        
+        <div class="mt-4">
+            <h5>Available Demo Routes:</h5>
+            <ul>
+                <li><a href="{{ path('demo_request_query') }}">GET /demo/request/query?page=1&limit=10</a></li>
+                <li><a href="{{ path('demo_request_map_query') }}?page=2&limit=20">GET /demo/request/map-query?page=2&limit=20</a></li>
+                <li><a href="{{ path('demo_request_post') }}">POST /demo/request/post</a> (use form to submit)</li>
+                <li><a href="{{ path('demo_request_api') }}">POST /demo/request/api</a> (use Postman/curl)</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
