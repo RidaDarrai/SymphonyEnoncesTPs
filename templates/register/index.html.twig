@@ -1,0 +1,45 @@
+{% extends 'layout.html.twig' %}
+{% form_theme registerForm _self %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1>Registration</h1>
+    
+    {{ form_start(registerForm) }}
+    <div class="mb-3">
+        {{ form_row(registerForm.email) }}
+    </div>
+    <div class="mb-3">
+        {{ form_row(registerForm.password) }}
+    </div>
+    <div class="mb-3">
+        {{ form_row(registerForm.fullName) }}
+    </div>
+    <button type="submit" class="btn btn-primary">Register</button>
+    {{ form_end(registerForm) }}
+</div>
+{% endblock %}
+
+{% block _register_password_row %}
+    <div class="row">
+        <div class="col-6">
+            {{ form_row(form.first, {label: 'Password: '}) }}
+        </div>
+        <div class="col-6">
+            {{ form_row(form.second, {label: 'Confirm Password: '}) }}
+        </div>
+    </div>
+{% endblock %}
+
+{% block _register_email_row %}
+    <div class="row">
+        <div class="col-12">
+            {{ form_label(form) }}
+            <div class="input-group mb-3">
+                {{ form_widget(form) }}
+                <span class="input-group-text" id="basic-addon2">@ehei.ac.ma</span>
+            </div>
+            {{ form_errors(form) }}
+        </div>
+    </div>
+{% endblock %}
