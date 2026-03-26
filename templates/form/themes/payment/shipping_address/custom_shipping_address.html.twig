@@ -1,0 +1,12 @@
+{% block shipping_address_row %}
+    <div class="pt-5">
+        {{ form_label(form, 'Shipping Address', {label_attr: {class: 'offset-md-2 fw-bolder'}}) }}
+    </div>
+    <div class="form-group row mb-2">
+        {{ form_label(form.shippingAddress, ' ' ,{label_attr: {class: 'col-2 col-form-label'}}) }}
+        <div class="col-10">
+            {{ form_widget(form.shippingAddress) }}
+        </div>
+        {{ form_errors(form.shippingAddress) }}
+    </div>
+{% endblock %}

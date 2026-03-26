@@ -1,0 +1,47 @@
+{% block _credit_card_expirationDate_row %}
+    <div class="row">
+        <div class="col-2">
+            {{ form_label(form) }}
+        </div>
+        <div class="col-10">
+            <div class="row">
+                <div class="col-6">
+                    {{ form_row(form.year) }}
+                </div>
+                <div class="col-6">
+                    {{ form_row(form.month) }}
+                </div>
+            </div>
+        </div>
+    </div>
+    {{ form_errors(form) }}
+{% endblock %}
+
+{% block _credit_card_cvv_row %}
+    <div class="row">
+        <div class="col-2">
+            {{ form_label(form) }}
+        </div>
+        <div class="col-10">
+            <div class="form-group">
+                {{ form_widget(form) }}
+            </div>
+        </div>
+        {{ form_errors(form) }}
+    </div>
+{% endblock %}
+
+{% block _credit_card_cardNumber_row %}
+    <div class="row">
+        <div class="col-2">
+            {{ form_label(form) }}
+        </div>
+        <div class="col-10">
+            <div class="form-group">
+                {{ form_widget(form) }}
+                <img src="{{ asset('images/card.png') }}" width="200px" alt="Card types"/>
+            </div>
+        </div>
+        {{ form_errors(form) }}
+    </div>
+{% endblock %}

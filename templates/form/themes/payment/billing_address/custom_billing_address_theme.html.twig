@@ -1,0 +1,96 @@
+{% block billing_address_row %}
+    <div class="pt-5">
+        {{ form_label(form, 'Billing Address', {label_attr: {class: 'offset-md-2 fw-bolder'}}) }}
+        <div class="form-group row mb-2">
+            {{ form_label(form.firstName, 'First Name: ' ,{label_attr: {class: 'col-2 col-form-label'}}) }}
+            <div class="col-10">
+                {{ form_widget(form.firstName) }}
+            </div>
+            {{ form_errors(form.firstName) }}
+        </div>
+        <div class="form-group row mb-2">
+            {{ form_label(form.lastName, 'Last Name: ' ,{label_attr: {class: 'col-2 col-form-label'}}) }}
+            <div class="col-10">
+                {{ form_widget(form.lastName) }}
+            </div>
+            {{ form_errors(form.lastName) }}
+        </div>
+        <div class="form-group row mb-2">
+            <div class="col-2">
+                {{ form_label(form.country, 'Country: ' ,{label_attr: {class: 'col-2 col-form-label'}}) }}
+            </div>
+            <div class="col-10">
+                {{ form_widget(form.country) }}
+            </div>
+            {{ form_errors(form.country) }}
+        </div>
+        <div class="form-group row mb-2">
+            <div class="col-2">
+                {{ form_label(form.addressLine1, 'Billing address: ' ,{label_attr: {class: 'col-2 col-form-label'}}) }}
+            </div>
+            <div class="col-10">
+                {{ form_widget(form.addressLine1) }}
+                {{ form_help(form.addressLine1) }}
+            </div>
+            {{ form_errors(form.addressLine1) }}
+        </div>
+        <div class="form-group row mb-2">
+            <div class="col-2">
+                {{ form_label(form.addressLine2) }}
+            </div>
+            <div class="col-10">
+                {{ form_widget(form.addressLine2) }}
+            </div>
+            {{ form_errors(form.addressLine2) }}
+        </div>
+        <div class="form-group row mb-2">
+            <div class="col-2">
+                {{ form_label(form.city, 'City: ' ,{label_attr: {class: 'col-2 col-form-label'}}) }}
+            </div>
+            <div class="col-10">
+                {{ form_widget(form.city) }}
+            </div>
+            {{ form_errors(form.city) }}
+        </div>
+        <div class="form-group row mb-2">
+            <div class="col-2">
+                {{ form_label(form.state, 'State: ' ,{label_attr: {class: 'col-2 col-form-label'}}) }}
+            </div>
+            <div class="col-10">
+                {{ form_widget(form.state) }}
+            </div>
+            {{ form_errors(form.state) }}
+        </div>
+        <div class="form-group row mb-2">
+            <div class="col-2">
+                {{ form_label(form.zipCode, 'ZIP: ' ,{label_attr: {class: 'col-2 col-form-label'}}) }}
+            </div>
+            <div class="col-10">
+                {{ form_widget(form.zipCode) }}
+            </div>
+            {{ form_errors(form.zipCode) }}
+        </div>
+        <div class="form-group row mb-2">
+            <div class="col-2">
+                {{ form_label(form.phoneNumber, 'Phone Number: ' ,{label_attr: {class: 'col-2 col-form-label'}}) }}
+            </div>
+            <div class="col-10">
+                {{ form_widget(form.phoneNumber) }}
+            </div>
+            {{ form_errors(form.phoneNumber) }}
+        </div>
+        <div class="form-group row mb-2">
+            <div class="col-2">
+                {{ form_label(form.emailAddress, 'Email Address: ' ,{label_attr: {class: 'col-2 col-form-label'}}) }}
+            </div>
+            <div class="col-10">
+                {{ form_widget(form.emailAddress) }}
+            </div>
+            {{ form_errors(form.emailAddress) }}
+        </div>
+    </div>
+{% endblock %}
+
+{% block _billing_address_label %}
+    <label {{ block('label_attributes') }}>{{ label }}</label>
+{% endblock %}

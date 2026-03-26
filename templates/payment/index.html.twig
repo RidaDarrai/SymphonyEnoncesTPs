@@ -1,0 +1,22 @@
+{% extends 'layout.html.twig' %}
+
+{% form_theme form with [
+    'form/themes/payment/billing_address/custom_billing_address_theme.html.twig',
+    'form/themes/payment/custom_theme.html.twig',
+    'form/themes/payment/shipping_address/custom_shipping_address.html.twig'
+] %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1>Credit Card Payment</h1>
+    
+    {{ form_start(form) }}
+    {{ form_row(form) }}
+    <div class="mt-4">
+        <button type="submit" class="btn btn-primary btn-lg">
+            Pay now
+        </button>
+    </div>
+    {{ form_end(form) }}
+</div>
+{% endblock %}
