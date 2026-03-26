@@ -1,0 +1,44 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1>Newsletter Subscription</h1>
+    
+    <div class="row mt-4">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h5>Subscribe to our Newsletter</h5>
+                </div>
+                <div class="card-body">
+                    <form method="post" action="{{ url('app.newsletter.register') }}">
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email address</label>
+                            <input type="email" class="form-control" id="email" name="email" required placeholder="Enter your email">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h5>How it works</h5>
+                </div>
+                <div class="card-body">
+                    <ol>
+                        <li>Enter your email address</li>
+                        <li>Submit the form</li>
+                        <li>The system sends a welcome email</li>
+                        <li>Email is sent from: <code>newsletter@eheio.ma</code></li>
+                    </ol>
+                    <p class="text-muted">
+                        <small>Note: Configure MAILER_DSN in .env to enable email sending.</small>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,71 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1>{{ controller_name }}</h1>
+    
+    <div class="card mt-4">
+        <div class="card-header">
+            <h5>Cart Promotion Demo</h5>
+        </div>
+        <div class="card-body">
+            <h6>Test Cart Handler with Promotions</h6>
+            <div class="row mt-3">
+                <div class="col-md-6">
+                    <div class="card bg-light">
+                        <div class="card-body">
+                            <h6>Regular Promotion (-200 DH)</h6>
+                            <p>Cart Total: 1500 DH - Promotion: 200 DH = Net: 1300 DH</p>
+                            <a href="{{ path('demo_services_cart_regular') }}" class="btn btn-primary">Test Regular</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card bg-light">
+                        <div class="card-body">
+                            <h6>Percentage Promotion (-20%)</h6>
+                            <p>Cart Total: 1500 DH - 20% = Net: 1200 DH</p>
+                            <a href="{{ path('demo_services_cart_percentage') }}" class="btn btn-primary">Test Percentage</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="card mt-4">
+        <div class="card-header">
+            <h5>Mailer Service Demo</h5>
+        </div>
+        <div class="card-body">
+            <h6>Three Mailers with Different Senders</h6>
+            <ul>
+                <li><strong>Newsletter:</strong> newsletter@eheio.ma</li>
+                <li><strong>Register:</strong> register@eheio.ma</li>
+                <li><strong>Alert:</strong> alert@eheio.ma</li>
+            </ul>
+            <a href="{{ path('demo_services_mailer') }}" class="btn btn-info">View Mailer Config</a>
+            <a href="{{ path('app_newsletter') }}" class="btn btn-success">Newsletter Form</a>
+        </div>
+    </div>
+    
+    <div class="card mt-4">
+        <div class="card-header">
+            <h5>Services Structure</h5>
+        </div>
+        <div class="card-body">
+            <h6>Cart Services</h6>
+            <pre class="bg-dark text-light p-3 rounded">
+App\Cart\Handler\CartHandler
+    └─ App\Cart\Promotion\PromotionService
+    └─ App\Cart\Persist\CartPersister
+    
+App\Service\Mailer\Mailer (3 instances)
+    ├─ app.mailer.newsletter (newsletter@eheio.ma)
+    ├─ app.mailer.register (register@eheio.ma)
+    └─ app.mailer.alert (alert@eheio.ma)
+            </pre>
+        </div>
+    </div>
+</div>
+{% endblock %}

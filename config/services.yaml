@@ -21,3 +21,30 @@ services:
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
+
+    # Mailer services with different senders
+    app.mailer.newsletter:
+        class: App\Service\Mailer\Mailer
+        arguments:
+            $fromAddress: 'newsletter@eheio.ma'
+            
+    app.mailer.register:
+        class: App\Service\Mailer\Mailer
+        arguments:
+            $fromAddress: 'register@eheio.ma'
+            
+    app.mailer.alert:
+        class: App\Service\Mailer\Mailer
+        arguments:
+            $fromAddress: 'alert@eheio.ma'
+
+    # Aliases for autowiring
+    App\Controller\NewsletterController:
+        arguments:
+            $newsletterMailer: '@app.mailer.newsletter'
+
+    App\Controller\ServiceDemoController:
+        arguments:
+            $newsletterMailer: '@app.mailer.newsletter'
+            $registerMailer: '@app.mailer.register'
+            $alertMailer: '@app.mailer.alert'
